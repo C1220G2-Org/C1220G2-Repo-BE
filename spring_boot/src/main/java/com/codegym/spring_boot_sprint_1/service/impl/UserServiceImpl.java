@@ -17,36 +17,8 @@ public class UserServiceImpl implements IUserService {
     private IUserRepository userRepository;
 
     @Override
-    public List<Object[]> findAllBookingHistoryOfUser(Long userId) {
-        return this.userRepository.findAllBookingHistoryOfUser(userId);
-    }
-
-    @Override
-    public List<Object[]> searchUserBookingHistory(Long userId, String roomName, String startDate, String endDate, String meetingType, String registrationDate) {
-        return this.userRepository.searchUserBookingHistory(userId, roomName, startDate, endDate, meetingType, registrationDate);
-    }
-
-    @Override
-    public List<Object[]> getAllBookingHistoryOfAllUsers() {
-        return this.userRepository.getAllBookingHistoryOfAllUsers();
-    }
-
-    @Override
-    public List<Object[]> searchBookingHistoryOnAdmin(String roomName, Long userId, String startDate, String endDate, String meetingType, String registrationDate) {
-        return this.userRepository.searchBookingHistoryOnAdmin(roomName, userId, startDate, endDate, meetingType, registrationDate);
-    }
-
-
-    //    --------------------------------------------------------------------------------
-
-    @Override
     public Page<User> findAll(Pageable pageable) {
-        return userRepository.findAllUser(pageable);
-    }
-
-    @Override
-    public List<User> searchUser(String keyword) {
-        return userRepository.searchUser(keyword);
+        return userRepository.findAll(pageable);
     }
 
     @Override
@@ -71,8 +43,8 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public void save(String email, String name, String password, String username, Long id, Byte status) {
-        userRepository.saveUser(email, name, password, username, id, status);
+    public void save(User user) {
+        userRepository.save(user);
     }
 
     @Override
@@ -82,32 +54,12 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public void deleteUser(Long id) {
-        userRepository.deleteUser(id);
-    }
-
-    @Override
-    public void updateUser(String email, String name, Long departmentId, String avatar, Long userId) {
-        userRepository.updateUser(email, name, departmentId, avatar, userId);
+        userRepository.deleteById(id);
     }
 
     @Override
     public void updateRole(Integer roleId, Long userId) {
         userRepository.updateRoleForUser(roleId, userId);
-    }
-
-    @Override
-    public void saveAvatar(String avatar, Long userId) {
-        userRepository.saveAvatar(avatar, userId);
-    }
-
-    @Override
-    public List<Integer> userIsDelete(Long id, String dateTime) {
-        return userRepository.userIsDelete(id, dateTime);
-    }
-
-    @Override
-    public Integer getRoleByUserId(Long userId) {
-        return userRepository.getRoleByUserId(userId);
     }
 
     @Override

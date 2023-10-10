@@ -9,6 +9,7 @@ public class EncryptPasswordUtils {
     }
 
     public static void main(String[] args) {
+        System.out.println(EncodePassword("123456"));;
     }
 
     public static Boolean comparePassword(String password, String currentPassword) {

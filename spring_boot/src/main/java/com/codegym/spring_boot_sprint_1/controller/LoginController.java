@@ -60,8 +60,7 @@ public class LoginController {
                     userDetails.getId(),
                     userDetails.getUsername(),
                     userDetails.getEmail(),
-                    roles,
-                    userDetails.getAvatar()));
+                    roles));
         } else {
             return ResponseEntity.badRequest().body(new MessageResponse("Lỗi đăng nhập."));
         }
