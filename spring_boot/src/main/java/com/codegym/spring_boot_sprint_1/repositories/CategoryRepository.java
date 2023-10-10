@@ -1,0 +1,10 @@
+package com.codegym.spring_boot_sprint_1.repositories;
+
+import com.codegym.spring_boot_sprint_1.model.Category;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+    Page<Category> findCategoryByName(String name, Pageable pageable);
+}

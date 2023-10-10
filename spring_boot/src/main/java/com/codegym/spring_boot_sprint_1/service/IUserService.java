@@ -8,25 +8,9 @@ import java.util.List;
 
 public interface IUserService {
 
-    //    Code of khahq
-
-    List<Object[]> findAllBookingHistoryOfUser(Long userId);
-
-    List<Object[]> searchUserBookingHistory(Long userId, String roomName, String startDate, String endDate, String meetingType, String registrationDate);
-
-    List<Object[]> getAllBookingHistoryOfAllUsers();
-
-    List<Object[]> searchBookingHistoryOnAdmin(String roomName, Long userId,
-                                               String startDate, String endDate,
-                                               String meetingType, String registrationDate);
-
-//    -------------------------------------------------------------
-
     Page<User> findAll(Pageable pageable);
 
     List<User> findAllByList();
-
-    List<User> searchUser(String keyword);
 
     User findById(Long id);
 
@@ -36,7 +20,7 @@ public interface IUserService {
 
     Boolean isUsernameExist(String username);
 
-    void save(String email, String name, String password, String username, Long id, Byte status);
+    void save(User user);
 
     void setRole(Long userId, Integer roleId);
 
@@ -44,13 +28,5 @@ public interface IUserService {
 
     void deleteUser(Long id);
 
-    void updateUser(String email, String name, Long departmentId, String avatar, Long userId);
-
     void updateRole(Integer roleId, Long userId);
-
-    void saveAvatar(String avatar, Long userId);
-
-    List<Integer> userIsDelete(Long id, String dateTime);
-
-    Integer getRoleByUserId(Long userId);
 }
